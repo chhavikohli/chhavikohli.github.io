@@ -1,0 +1,1 @@
+export const categories = [{name:'All Posts',collectionId:''}, {name:'Javascript', collectionId:35227},  {name:'Angular', collectionId:35229},  {name:'React', collectionId:35230}];
