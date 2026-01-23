@@ -12,27 +12,23 @@
  * @returns {Promise<Array>}              - Array of article objects
  */
 export async function fetchDevtoArticles({
-  collectionId,
-  signal
-} = {}) {
-        const username = "chhavikohli";
-  let url = new URL("https://dev.to/api/articles");
- 
-  if (collectionId) url.searchParams.set("collection_id", String(collectionId));
-  else if (username) url.searchParams.set("username", username);
-
-  const res = await fetch(url.toString(), {
-    headers: {
-      // Forem recommends sending a User-Agent for public read endpoints
-      "User-Agent": "YourName-Portfolio/1.0"
-    },
+    collectionId,
     signal
-  });
+} = {}) {
+    const username = "chhavikohli";
+    let url = new URL("https://dev.to/api/articles");
 
-  if (!res.ok) {
-    // surface useful error info
-    const text = await res.text().catch(() => "");
-    throw new Error(`DEV.to fetch failed: ${res.status} ${res.statusText} ${text}`);
-  }
-  return res.json();
+    if (collectionId) url.searchParams.set("collection_id", String(collectionId));
+    else if (username) url.searchParams.set("username", username);
+
+    const res = await fetch(url.toString(), {
+        signal
+    });
+
+    if (!res.ok) {
+        // surface useful error info
+        const text = await res.text().catch(() => "");
+        throw new Error(`DEV.to fetch failed: ${res.status} ${res.statusText} ${text}`);
+    }
+    return res.json();
 }
