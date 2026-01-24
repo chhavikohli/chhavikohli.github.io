@@ -1,4 +1,4 @@
-import { categories } from "../../shared/constant";
+import { categories } from "../../shared/constants/dev.collection.constant";
 const FilterBar = ({ activeCategory, onSelect }) => {
  
   return (

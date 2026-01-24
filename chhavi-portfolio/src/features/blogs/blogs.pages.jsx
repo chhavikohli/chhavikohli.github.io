@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import FilterBar from "../../app/layout/FilterBar";
 import BlogsList from "./blogs.list.jsx";
-import { categories } from "../../shared/constant";
+import { categories } from "../../shared/constants/dev.collection.constant.js";
 import { fetchDevtoArticles } from "./blogs.service.js";
 import { MdSearchOff } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md"
 import { MdKeyboardArrowRight } from "react-icons/md";
-import BlogCard from "./blogCard.jsx";
-
-
 
 export default function Blogs() {
     const [activeCategory, setActiveCategory] = useState(categories[0]);

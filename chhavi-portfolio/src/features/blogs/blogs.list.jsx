@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import FilterBar from "../../app/layout/FilterBar";
-import { categories } from "../../shared/constant";
-import { fetchDevtoArticles } from "./blogs.service.js";
 import { MdSearchOff } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md"
 import { MdKeyboardArrowRight } from "react-icons/md";
