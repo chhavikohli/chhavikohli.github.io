@@ -19,11 +19,14 @@ export default function Blogs() {
         async function load() {
             try {
                 setStatus("loading");
-                const data = await fetchDevtoArticles({
+                let data = await fetchDevtoArticles({
                     collectionId: activeCategory.collectionId,
                     signal: controller.signal
                 });
-                 setStatus("success");
+
+                data = data.filter(i => i.collection_id)
+
+                setStatus("success");
                 setPosts(data);
             } catch (e) {
                 if (e.name !== "AbortError") {
@@ -54,7 +57,7 @@ export default function Blogs() {
                         />
                     </div>
                     {/* Grid */}
-                      {renderStatus(status, posts)}
+                    {renderStatus(status, posts)}
                 </div>
             </div>
         </section>
@@ -64,12 +67,12 @@ export default function Blogs() {
 
 
 function renderStatus(status, posts) {
-  switch (status) {
-    case 'loading': return <p>Loading…</p>;
-    case 'success': return <BlogsList posts={posts}/>;
-    case 'error':   return <p>Error</p>;
-    default:        return null;
-  }
+    switch (status) {
+        case 'loading': return <p>Loading…</p>;
+        case 'success': return <BlogsList posts={posts} />;
+        case 'error': return <p>Error</p>;
+        default: return null;
+    }
 }
 
 
